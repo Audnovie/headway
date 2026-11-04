@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Headway</title>
+  <meta name="description" content="Compare transit, car and walking commutes from several starting points to one destination at a time.">
+  <meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12171D" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Headway">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=1.0.0">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M5 24 L13 12 L19 18 L27 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="5" cy="24" r="3.4" fill="var(--start)"/>
+        <rect x="23.6" y="3.6" width="6.8" height="6.8" rx="1.4" fill="var(--dest)"/>
+      </svg>
+      <span class="brand-name">Headway</span>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <button type="button" class="tab" data-view="compare">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h4M4 12h10M4 6h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+        <span>Compare</span>
+      </button>
+      <button type="button" class="tab" data-view="places">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg>
+        <span>Places</span>
+      </button>
+      <button type="button" class="tab" data-view="settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="15" cy="7" r="2.3" stroke="currentColor" stroke-width="2.2" fill="none"/><circle cx="9" cy="17" r="2.3" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+    <button type="button" class="usage-chip" id="usageChip" hidden></button>
+  </header>
+
+  <div id="banner" class="banner" role="status" aria-live="polite" hidden></div>
+
+  <main id="main">
+    <section id="view-compare" class="view" aria-label="Compare">
+      <div class="compare-layout">
+        <div class="map-wrap">
+          <div id="map" class="map" role="region" aria-label="Map of your places"></div>
+          <p id="mapNote" class="map-note" hidden></p>
+        </div>
+        <div class="compare-panel">
+          <div id="destPicker" class="dest-picker"></div>
+          <div id="controls" class="controls"></div>
+          <div id="actions" class="actions"></div>
+          <div id="summary" class="summary" aria-live="polite"></div>
+          <ol id="results" class="results"></ol>
+          <div id="exportBar" class="export-bar"></div>
+        </div>
+      </div>
+    </section>
+    <section id="view-places" class="view" aria-label="Places" hidden></section>
+    <section id="view-settings" class="view" aria-label="Settings" hidden></section>
+  </main>
+
+  <aside id="sheet" class="sheet" role="dialog" aria-modal="false" aria-labelledby="sheetTitle" hidden></aside>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript><p class="noscript">Headway needs JavaScript turned on.</p></noscript>
+  <script src="app.js?v=1.0.0" defer></script>
+</body>
+</html>
